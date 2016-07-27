@@ -16,7 +16,7 @@ More details on each can be found below.
 
 **Requirements:**
 
-* Are standardized by the WG and have a corresponding specification that details how they are identified, their expected response, and supported `data` attributes
+* Are documented by the Web Payments Working Group through corresponding payment method specifications that also describe input and output data.
 * Are identified by a URN (i.e. it is purely an identifier, it does not resolve to anything)
 * Can be supported by any third party payment app
 * Identifier should have the format of: `urn:payment-method:{name}` [1]
@@ -46,10 +46,10 @@ Any changes made to these payment methods over time must be approved by the WG.
 
 **Requirements:**
 
-* Are not standardized by the WG and thus do not have specifications located inside WG-controlled repos
+* Are not documented by the Web Payments Working Group through formally published payment method specifications.
 * Are identified by an absolute URL (e.g. https://bobpay.xyz/pay)
-* Documentation is the responsbility of the payment method owner
-* By default, third party payment apps other than those associated with the identifying origin cannot claim to offer support for these payment methods
+* Documentation is the responsibility of the payment method owner
+* By default, third party payment apps other than those associated with the identifying origin cannot claim to offer support for these payment methods (i.e. the payment mediator must not match the payment app unless this assertion exists)
 
 This proposal does not necessarily assume that anything should exist at the identifying URL, but it is probably *really useful* to do so. The WG should consider standardizing what this optional thing could look like (e.g. a manifest file containing information about the payment method).
 
@@ -88,7 +88,7 @@ var methodData = [{
 }];
 ```
 
-> Note: It's important to note that a number of third party payment apps might not know whether or not a given card in their system is credit or debit. If we require the payment app to report this and aggressively filter in cases where they don't know, we potentially prevent users from using cards they might otherwise have been able to pay with. Should we enforce this aggressive filtering, or fall back on the user to decide?
+> Note: Card holders can readily distinguish credit from debit cards because of text printed on their cards. Because it is, in general, complex to determine “credit or debit” through the PAN alone, some third party apps may not reliably determine the card type. We could specify a mechanism for payment apps to indicate that they do not know the card type. In this case, we could either “match” on “unknown” and rely on users to do the right thing, or we could “not match” on “unknown” which might prevent users from paying with appropriate cards.
 
 For more complex requirements (e.g. limiting to corporate cards), we would expect a more advanced card payment option to be available under a different identifier, `urn:payment-method:advanced-card-payment`, that can evolve independently of basic card payments.
 
