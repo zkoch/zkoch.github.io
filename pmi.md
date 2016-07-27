@@ -8,7 +8,7 @@ This is a proposal for how Payment Method Identifers could work with the Payment
 
 ### Payment Methods
 
-Broadly, there are two types of payment methods that we care about: 1.) General, "open" systems that can be integrated and/or supported by a variety of players without special permission (e.g. credit cards, SEPA, etc); 2.) What can be called "proprietary" systems (e.g. PayPal.com). It is oftentimes the case, though not always, that there is a 1:1 mapping between a proprietary payment method and its corresponding application (e.g. only the PayPal application can process a PayPal payment).
+Broadly, there are two types of payment methods that we care about: 1.) General, "open" systems that can be integrated and/or supported by a variety of players without special permission (e.g. credit cards, SEPA, etc); 2.) What can be called "proprietary" systems (e.g. PayPal.com). It is oftentimes the case, though not always, that there is a 1:1 mapping between a proprietary payment method and its corresponding payment application (e.g. only the PayPal application can process a PayPal payment).
 
 More details on each can be found below.
 
@@ -16,7 +16,7 @@ More details on each can be found below.
 
 **Requirements:**
 
-* Are standardized by the WG and have a corresponding specification that details how they are identified and their expected response
+* Are standardized by the WG and have a corresponding specification that details how they are identified, their expected response, and supported `data` attributes
 * Are identified by a URN (i.e. it is purely an identifier, it does not resolve to anything)
 * Can be supported by any third party payment app
 * Identifier should have the format of: `urn:payment-method:{name}` [1]
