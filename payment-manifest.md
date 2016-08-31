@@ -34,7 +34,7 @@ This manifest contains information about how that payment method can be used. Th
 
 ### Accessing the Payment-Manifest (strawman)
 
-`payment-manifest.json` must live at the directory of the identifying URL. It must be fetched with a MIME type of `application/json`.
+`payment-manifest.json` must live in the directory of the identifying URL. It must be fetched with a MIME type of `application/json`.
 
 As a concrete example, let's assume I define a payment method with the following identifier: `https://bobpay.xyz/pay`. The corresponding payment manifest file must live at `https://bobpay.xyz/pay/payment-manifest.json`.
 
@@ -52,7 +52,7 @@ There are three primary use cases that this manifest file seeks to address right
 
 1. The ability to confirm the authenticity of payment apps associated with payment methods. Put another way, if a user installs a payment application associated with a proprietary payment method on their platform of choice, we want to verify that the app is who is claims to be.
 2. The ability for proprietary payment methods to control what other payment apps in the system (in addition to themselves) are able to support their payment method.
-3. The ability for payment mediators to offer improved UX in cases where users want to use a payment method but don't have a necessary app installed.
+3. The ability for payment mediators to offer improved UX in cases where a users wants to use a payment method but doesn't have a necessary app installed.
 
 ## Example Structure of a Payment-Manifest
 
@@ -90,7 +90,7 @@ There are three primary use cases that this manifest file seeks to address right
 }
 ```
 
-## Alterntive Proposals for Accessing Payment-Manifest
+## Alternative Proposals for Accessing Payment-Manifest
 
 There are a few other ways that we could go about doing this. This is open for discussion. A couple other ideas to get started:
 
