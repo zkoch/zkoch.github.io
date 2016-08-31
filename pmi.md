@@ -17,20 +17,19 @@ More details on each can be found below.
 **Requirements:**
 
 * Are documented by the Web Payments Working Group through corresponding payment method specifications that also describe input and output data.
-* Are identified by a URN (i.e. it is purely an identifier, it does not resolve to anything)
+* Are identified by a string defined in the payment method specification
 * Can be supported by any third party payment app
-* Identifier should have the format of: `urn:payment-method:{name}` [1]
 
 A more detailed example of how credit cards will work in this world can be found below, but as a short example taking our existing specifications for [Basic Card Payment](https://w3c.github.io/webpayments-methods-card/) and [SEPA Credit Transfer](http://w3c.github.io/webpayments-methods-credit-transfer-direct-debit/), we would have:
 
 ```js
 var supportedMethods = [{
-  supportedMethods: ['urn:payment-method:basic-card-payment'],
+  supportedMethods: ['basic-card-payment'],
   data: {
     supportedNetworks: ['visa']
   }
 }, {
-  supportedMethods: ['urn:payment-method:push-sct'],
+  supportedMethods: ['push-sct'],
   data: {
     somethingAboutSepa: '12345'
   }
@@ -38,8 +37,6 @@ var supportedMethods = [{
 ```
 
 Any changes made to these payment methods over time must be approved by the WG.
-
-[1] We can formalize what we think this naming structure should look like. This is just a straw man to get started.
 
 
 ### Proprietary Systems
@@ -50,21 +47,7 @@ Any changes made to these payment methods over time must be approved by the WG.
 * Are identified by an absolute URL (e.g. https://bobpay.xyz/pay)
 * Documentation is the responsibility of the payment method owner
 * By default, third party payment apps other than those associated with the identifying origin cannot claim to offer support for these payment methods (i.e. the payment mediator must not match the payment app unless this assertion exists)
-
-This proposal does not necessarily assume that anything should exist at the identifying URL, but it is probably *really useful* to do so. The WG should consider standardizing what this optional thing could look like (e.g. a manifest file containing information about the payment method).
-
-The benefit of the above approach is that it provides a mechanism for the identifying origin to assert what other origins could potentially also support that payment method.
-
-For example, let's say that BobPay is a proprietary payment method, but BobPay has struck a deal with AlicePay to also allow AlicePay to return back valid BobPay payment responses. We could define a mechanism to support this within the manifest file located at bobpay.xyz/pay:
-
-```js
-{
-  name: 'BobPay - Payments of the Future',
-  supportedOrigins: ['https://alicepay.xyz']
-}
-``` 
-
-In addition to the above, a manifest file (or similar) allows the Payment Mediators to pull data about unknown payment methods for a variety of improved user experiences.
+* Must have a corresponding [payment-manifest.json](https://github.com/zkoch/zkoch.github.io/blob/master/payment-manifest.md) file accessible at the identifying path. 
 
 ## Credit Cards
 
@@ -80,7 +63,7 @@ Example:
 
 ```js
 var methodData = [{
-  supportedMethods: ['urn:payment-method:basic-card-payment'],
+  supportedMethods: ['basic-card-payment'],
   data: {
     supportedNetworks: ['visa', 'mastercard'],
     supportedTypes: ['debit']
@@ -100,13 +83,13 @@ To enable some of the more complex matching requirements for payment methods, a 
 
 ```js
 var methodData = [{
-  supportedMethods: ['urn:payment-method:basic-card-payment'],
+  supportedMethods: ['basic-card-payment'],
   data: {
     supportedNetworks: ['visa'],
     supportedTypes: ['debit']
   }
 }, {
-  supportedMethods: ['urn:payment-method:basic-card-payment'],
+  supportedMethods: ['basic-card-payment'],
   data: {
     supportedNetworks: ['mastercard'],
     supportedTypes: ['credit']
