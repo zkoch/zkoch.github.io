@@ -3,7 +3,7 @@ zkoch@
 
 ## Intro
 
-This proposal is an extension of the [Payment Method Identifier](https://github.com/w3c/webpayments/blob/gh-pages/proposals/zach-pmi.md) proposal. In that proposal I state:
+This proposal is an extension of the [Payment Method Identifier](https://github.com/zkoch/zkoch.github.io/blob/master/pmi.md) proposal. In that proposal I state:
 
 > This proposal does not necessarily assume that anything should exist at the identifying URL, but it is probably really useful to do so.
 
