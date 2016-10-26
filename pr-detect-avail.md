@@ -18,12 +18,12 @@ It probably makes the most sense for this to be a `Promise`.
 A straw man:
 
 ```js
-pr.canMakePayment()
+pr.canMakeActivePayment()
   .then(() => { return pr.show(); })
   .catch(error => { console.log(error); });
 ```
 
-We would still prefer that merchants not be able to simply iterate through the entire set of payment methods and determine availability for privacy reasons. As such, `canMakeActivePayment` will be rate limited to 1 call per page load.
+We would still prefer that merchants not be able to simply iterate through the entire set of payment methods and determine availability for privacy reasons. As such, `canMakeActivePayment` will be rate limited to 1 call per origin per some window of time (where the duration of this is still TBD). 
 
 We would, however, be accepting that payment requests that are instantiated with only a single form of payment available would leak whether or now that single form of payment was available. This does not strike me as overly problematic, even if not ideal.
 
