@@ -13,17 +13,17 @@ Our initial response to this feedback was to call `.show()` and, if it throws, f
 
 We add a new method onto PaymentRequest, `canMakeActivePayment()`, that returns back a Boolean indicating whether or not the user has the ability to make a payment at the time `show()` is called.
 
-It probably makes the most sense for this to be a `Promise`.
-
-A straw man:
+This will be a `Promise`.
 
 ```js
 pr.canMakeActivePayment()
-  .then(() => { return pr.show(); })
+  .then((result) => { if (result) return pr.show(); })
   .catch(error => { console.log(error); });
 ```
 
-We would still prefer that merchants not be able to simply iterate through the entire set of payment methods and determine availability for privacy reasons. As such, `canMakeActivePayment` will be rate limited to 1 call per origin per some window of time (where the duration of this is still TBD). 
+We would still prefer that merchants not be able to simply iterate through the entire set of payment methods and determine availability for privacy reasons. As such, `canMakeActivePayment` will be limited in the following way:
+
+* canMakeActivePayment can only be called once per top-level domain in a 30-minute window
 
 We would, however, be accepting that payment requests that are instantiated with only a single form of payment available would leak whether or now that single form of payment was available. This does not strike me as overly problematic, even if not ideal.
 
