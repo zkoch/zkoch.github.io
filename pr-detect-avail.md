@@ -24,6 +24,7 @@ pr.canMakeActivePayment()
 We would still prefer that merchants not be able to simply iterate through the entire set of payment methods and determine availability for privacy reasons. As such, `canMakeActivePayment` will be limited in the following way:
 
 * canMakeActivePayment can only be called once per top-level domain in a 30-minute window
+* canMakeActivePayment can be called multiple times within 30-minute window if the set of payment methods is the same
 
 We would, however, be accepting that payment requests that are instantiated with only a single form of payment available would leak whether or now that single form of payment was available. This does not strike me as overly problematic, even if not ideal.
 
