@@ -35,7 +35,7 @@ We will use HTTP Link Headers defined in [RFC5988](http://www.rfc-editor.org/rfc
 
 The format of the HTTP link header for manifest is as follows:
 
-`Link: <https://alicepay.com/pay/>; rel="payment-method-manifest"`
+`Link: </pay/payment-manifest.json>; rel="payment-method-manifest"`
 
 A new relationship type of "payment-method-manifest" will need to be coordinated with the IANA.
 
