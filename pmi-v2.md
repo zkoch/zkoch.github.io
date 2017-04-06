@@ -78,8 +78,11 @@ Below is an example of a web app manifest for a payment app. Web app manifests a
     {
       "platform": "play",
       "url": "https://play.google.com/store/apps/details?id=com.bobpay",
-      "sha256_cert_fingerprints": ["59:5C:88:65:FF:C4:E8:20:CF:F7:3E:C8..."], //new
-      "version": 1, // new
+      "fingerprints": [{
+        "type": "sha256_cert",
+        "value": "59:5C:88:65:FF:C4:E8:20:CF:F7:3E:C8..."
+      }], //new
+      "min_version": 1, // new
       "id": "com.example.app1"
     }, {
       "platform": "itunes",
