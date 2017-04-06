@@ -51,7 +51,7 @@ A new relationship type of "payment-method-manifest" will need to be coordinated
 
 ## Example Web App Manifest (simplified)
 
-Below is an example of a web app manifest for a payment app. Web app manifests already have affordances for native apps and service workers, so the only additional bits necessary are platform-specific for the validation of payment apps. We've added two to the "play" platform: `sha256_cert_fingerprints` and `version`.
+Below is an example of a web app manifest for a payment app. Web app manifests already have affordances for native apps and service workers, so the only additional bits necessary are platform-specific for the validation of payment apps. We've added two to the "play" platform: `fingerprints` and `min_version`.
 
 ```js
 {
