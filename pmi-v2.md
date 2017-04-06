@@ -44,7 +44,7 @@ A new relationship type of "payment-method-manifest" will need to be coordinated
 ```js
 // payment-manifest.json
 {
-  "applications": ["https://bobpay.xyz/path/to/webappmanifest.json"],
+  "default_applications": ["https://bobpay.xyz/path/to/webappmanifest.json"],
   "supported_origins": ["https://alicepay.xyz"] // or "*" to indicate open
 }
 ```
